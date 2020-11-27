@@ -26,28 +26,21 @@ public class TraineeController {
 		this.service = service;
 	}
 
+	//Create a trainee- signing up
 	@PostMapping("/create")
 	public ResponseEntity<Trainee> createTrainee(@RequestBody Trainee trainee) {
 		return new ResponseEntity<Trainee>(this.service.createTrainee(trainee), HttpStatus.CREATED);
 	}
-
+	//Get trainee name when signing in
 	@GetMapping("/get")
 	public ResponseEntity<List<Trainee>> getTrainee() {
 		return ResponseEntity.ok(this.service.getTrainee());
 	}
 
-	@DeleteMapping("/remove/{id}")
-	public ResponseEntity<Object> deleteTrainee(@PathVariable Long id) {
-		if (this.service.deleteTrainee(id)) {
-			return new ResponseEntity<>(HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-	}
-
-	@PutMapping("/update")
-	public ResponseEntity<Trainee> updateTicket(@RequestBody Trainee trainee, @PathParam("id") Long id) {
-		return new ResponseEntity<Trainee>(this.service.updateTrainee(trainee, id), HttpStatus.ACCEPTED);
-	}
+	
+	//@PutMapping("/update")
+	//public ResponseEntity<Trainee> updateTicket(@RequestBody Trainee trainee, @PathParam("id") Long id) {
+	//	return new ResponseEntity<Trainee>(this.service.updateTrainee(trainee, id), HttpStatus.ACCEPTED);
+	//}
 
 }
